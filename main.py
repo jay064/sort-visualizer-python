@@ -79,4 +79,4 @@ def heap_sort(array):
     sorted_array = array
     return sorted_array
 
-## OTHER ALGORITHMS FOR SORTING GOES HERE
+# OTHER ALGORITHMS FOR SORTING GOES HERE
