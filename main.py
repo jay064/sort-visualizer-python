@@ -1,13 +1,21 @@
-def merge_sort(array):
-    if len(array) <= 1:
-        return array
+def main():
 
-    array_length = len(array)
-    midpoint = array_length // 2
-    left, right = merge_sort(array[:midpoint]), merge_sort(array[midpoint:])
+    # FOR TESTING PURPOSES
 
-    return merge(left, right)
+    my_arr = [5, 2, 7, 4]
+    print(my_arr)
 
+    new_arr_merge = merge_sort(my_arr)
+    new_arr_heap = heap_sort(my_arr)
+
+    print(new_arr_merge)
+    print(new_arr_heap)
+
+
+main()
+
+
+# MERGE SORT GOES HERE
 
 def merge(left, right):
     sorted_array = []
@@ -29,13 +37,25 @@ def merge(left, right):
     return sorted_array
 
 
-## HEAP SORT GOES HERE##
+def merge_sort(array):
+    if len(array) <= 1:
+        return array
 
-# heapify takes 3 prameters: array, length of array n, index of parent node i
+    array_length = len(array)
+    midpoint = array_length // 2
+    left, right = merge_sort(array[:midpoint]), merge_sort(array[midpoint:])
+
+    return merge(left, right)
+
+
+# HEAP SORT GOES HERE##
+
+# heapify takes 3 parameters: array, length of array n, index of parent node i
 
 def heapify(array, n, i):
     largest = i
-    left = right = (i * 2) + 1
+    left = (i * 2) + 1
+    right = (i * 2) + 2
 
     if left < n and array[left] > array[largest]:
         largest = 1
@@ -48,18 +68,16 @@ def heapify(array, n, i):
 
 
 def heap_sort(array):
+    sorted_array = []
     n = len(array)
-
+    last = int(n / 2) - 1
+    first = -1
+    for i in range(last, first, -1):
+        heapify(array, n, i)
+    for i in range(n - 1, 0, -1):
+        array[i], array[0] = array[0], array[i]
+        heapify(array, i, 0)
+    sorted_array = array
+    return sorted_array
 
 ## OTHER ALGORITHMS FOR SORTING GOES HERE
-
-
-def main():
-    my_arr = [5, 2, 7, 4]
-    print(my_arr)
-
-    new_arr = merge_sort(my_arr)
-    print(new_arr)
-
-
-main()
