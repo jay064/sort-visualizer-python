@@ -29,7 +29,26 @@ def merge(left, right):
     return sorted_array
 
 
-## BREADTH-FIRST GOES HERE##
+## HEAP SORT GOES HERE##
+
+# heapify takes 3 prameters: array, length of array n, index of parent node i
+
+def heapify(array, n, i):
+    largest = i
+    left = right = (i * 2) + 1
+
+    if left < n and array[left] > array[largest]:
+        largest = 1
+    if right < n and array[right] > array[largest]:
+        largest = right
+
+    if largest != i:
+        array[largest], array[i] = array[i], array[largest]
+        heapify(array, n, largest)
+
+
+def heap_sort(array):
+    n = len(array)
 
 
 ## OTHER ALGORITHMS FOR SORTING GOES HERE
