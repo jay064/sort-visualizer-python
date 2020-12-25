@@ -68,7 +68,6 @@ def heapify(array, n, i):
 
 
 def heap_sort(array):
-    sorted_array = []
     n = len(array)
     last = int(n / 2) - 1
     first = -1
